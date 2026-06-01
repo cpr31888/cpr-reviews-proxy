@@ -1,0 +1,246 @@
+<!-- ============================================================
+     SQUARESPACE CODE BLOCK — paste this into an Embed / Code block
+     Replace YOUR_PROXY_URL with your deployed server URL
+     e.g. https://my-reviews-proxy.onrender.com/reviews
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  .gr-section {
+    font-family: 'DM Sans', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .gr-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .gr-overall {
+    display: flex;
+    flex-direction: column;
+  }
+  .gr-score {
+    font-family: 'Lora', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    color: #1a1a1a;
+  }
+  .gr-stars-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .gr-stars {
+    color: #F5A623;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .gr-count {
+    font-size: 13px;
+    color: #888;
+    font-weight: 300;
+  }
+  .gr-google-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #999;
+    margin-left: auto;
+    text-decoration: none;
+  }
+  .gr-google-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+  .gr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .gr-card {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: box-shadow 0.2s;
+  }
+  .gr-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .gr-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .gr-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e8f5f0;
+    flex-shrink: 0;
+  }
+  .gr-avatar-initials {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #d4eddf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a7a54;
+    flex-shrink: 0;
+  }
+  .gr-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  .gr-date {
+    font-size: 12px;
+    color: #bbb;
+    font-weight: 300;
+    margin: 0;
+  }
+  .gr-card-stars {
+    color: #F5A623;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .gr-text {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.7;
+    font-weight: 300;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .gr-loading {
+    text-align: center;
+    padding: 3rem;
+    color: #aaa;
+    font-size: 14px;
+  }
+  .gr-error {
+    text-align: center;
+    padding: 2rem;
+    color: #c0392b;
+    font-size: 13px;
+    background: #fdf0ee;
+    border-radius: 8px;
+  }
+</style>
+
+<section class="gr-section" aria-label="Patient reviews">
+  <div class="gr-header" id="gr-header" style="display:none">
+    <div class="gr-overall">
+      <span class="gr-score" id="gr-score">—</span>
+      <div class="gr-stars-row">
+        <span class="gr-stars" id="gr-header-stars"></span>
+        <span class="gr-count" id="gr-count"></span>
+      </div>
+    </div>
+    <a class="gr-google-badge" id="gr-badge" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Google Reviews
+    </a>
+  </div>
+
+  <div class="gr-loading" id="gr-loading">Loading reviews…</div>
+  <div class="gr-error" id="gr-error" style="display:none"></div>
+  <div class="gr-grid" id="gr-grid"></div>
+</section>
+
+<script>
+(function () {
+  // ✅ Replace with your deployed proxy URL
+  const PROXY_URL = "https://YOUR_PROXY_URL/reviews";
+
+  // ✅ Replace with your Google Maps Place URL for the badge link
+  const MAPS_URL = "https://maps.google.com/?cid=YOUR_PLACE_CID";
+
+  function stars(n) {
+    return "★".repeat(n) + "☆".repeat(5 - n);
+  }
+
+  function initials(name) {
+    return name.split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase();
+  }
+
+  function timeAgo(unixSeconds) {
+    const diff = Math.floor(Date.now() / 1000) - unixSeconds;
+    if (diff < 86400) return "Today";
+    if (diff < 604800) return Math.floor(diff / 86400) + "d ago";
+    if (diff < 2592000) return Math.floor(diff / 604800) + "w ago";
+    if (diff < 31536000) return Math.floor(diff / 2592000) + "mo ago";
+    return Math.floor(diff / 31536000) + "y ago";
+  }
+
+  fetch(PROXY_URL)
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById("gr-loading").style.display = "none";
+
+      if (data.error) throw new Error(data.error);
+
+      // Header
+      document.getElementById("gr-score").textContent = data.rating.toFixed(1);
+      document.getElementById("gr-header-stars").textContent = stars(Math.round(data.rating));
+      document.getElementById("gr-count").textContent = data.user_ratings_total.toLocaleString() + " reviews";
+      document.getElementById("gr-badge").href = MAPS_URL;
+      document.getElementById("gr-header").style.display = "flex";
+
+      // Cards
+      const grid = document.getElementById("gr-grid");
+      (data.reviews || []).forEach(review => {
+        const card = document.createElement("div");
+        card.className = "gr-card";
+
+        const avatarHTML = review.profile_photo_url
+          ? `<img class="gr-avatar" src="${review.profile_photo_url}" alt="${review.author_name}" loading="lazy">`
+          : `<div class="gr-avatar-initials">${initials(review.author_name)}</div>`;
+
+        card.innerHTML = `
+          <div class="gr-reviewer">
+            ${avatarHTML}
+            <div>
+              <p class="gr-name">${review.author_name}</p>
+              <p class="gr-date">${timeAgo(review.time)}</p>
+            </div>
+          </div>
+          <div class="gr-card-stars">${stars(review.rating)}</div>
+          <p class="gr-text">${review.text || "No written review."}</p>
+        `;
+        grid.appendChild(card);
+      });
+    })
+    .catch(err => {
+      document.getElementById("gr-loading").style.display = "none";
+      const errEl = document.getElementById("gr-error");
+      errEl.textContent = "Could not load reviews at this time. " + err.message;
+      errEl.style.display = "block";
+    });
+})();
+</script>
