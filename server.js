@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Replace with your Squarespace site domain
-const ALLOWED_ORIGIN = "https://your-site.squarespace.com";
+const ALLOWED_ORIGIN = "https://www.capoperformance.com";
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY; // Set in your host's env vars
 const PLACE_ID = process.env.PLACE_ID;             // Your Google Place ID
