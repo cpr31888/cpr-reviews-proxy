@@ -12,12 +12,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Replace with your Squarespace site domain
-const ALLOWED_ORIGIN = "https://tuatara-khaki-3cmk.squarespace.com/config/pages";
+// CORS open during development
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY; // Set in your host's env vars
 const PLACE_ID = process.env.PLACE_ID;             // Your Google Place ID
 
-app.use(cors({ origin: ALLOWED_ORIGIN }));
+app.use(cors()); // Allow all origins temporarily
 
 app.get("/reviews", async (req, res) => {
   if (!GOOGLE_API_KEY || !PLACE_ID) {
